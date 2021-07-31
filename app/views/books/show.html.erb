@@ -1,0 +1,42 @@
+  <main>
+  <% if @books.errors.any? %>
+    <%= @books.errors.count %>件のエラーが発生しました
+    <% @books.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+
+  <p class="notice">
+      <% if flash[:notice] %>
+      <%= notice %>
+      <% end %>
+  </p>
+
+
+  <div class="container">
+    <div class="row">
+    <%= render "devise/shared/sidebar", user: @user, books: @books %>
+      <div class="col-md-8 offset-md-1">
+      <h1>Book detail</h1>
+        <table class="table">
+          <tbody>
+            <tr>
+              <td><%= link_to attachment_image_tag(@user, :profile_image, fallback: "no_image.jpg"), user_path(@user)%>
+              <%= link_to @user.name, user_path(@user) %>
+              <!--(current_user)-->
+              </td>
+              <td><%= @book.title %></td>
+              <td><%= @book.body %></td>
+              <% if @book.user == current_user %>
+              <!--.idとつける場合は片方だけだと比較ができなくなるので注意-->
+              <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-success" %></td>
+              <td><%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-danger" %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</main>
+
