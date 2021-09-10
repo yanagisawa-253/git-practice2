@@ -6,7 +6,7 @@ class Public::AddressesController < ApplicationController
   end
   
   def create
-    @address =Address.new(params[:id])
+    @address = Address.new(params[:id])
     if @address.save
       redirect_to public_addresses_path
     else
