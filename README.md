@@ -22,8 +22,13 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+＊09/10日ひも付け完了pushしろ＊
+「やることリスト」
 
-退会画面表示のルートがうまくいかない
+・退会画面表示のルートがうまくいかないcustomer/edit
+
 自分で名前をつけた場合の定義の仕方の確認をする
 
-＊09/10日ひも付け完了pushしろ＊
+・topページに商品一覧表示時をさせる
+
+・address/index/destroyルート確認してできるようにする

@@ -15,14 +15,12 @@
           </tr>
         </thead>
         <tbody>
-          <%= @items.each do |item| %>
-          <tr>
-            <td><%= item.name %></td>
-          <% end %>
           <%= @cart_item.each do |cart_item| %>
-            <td><%= cart_item.with_tax_price %></td>
+          <tr>
+            <td><%= f.hidden_field :name, value: "item.name" %></td>
+            <td><%= cart_item.item.with_tax_price %></td>
             <td><%= f.select :amount, *[1..10] %></td>
-            <td><%= cart_item.subtotal %></td>
+            <td><%= cart_item.item.subtotal %></td>
             <td><%= link_to '削除する', , class: "btn btn-danger" %></td>
           </tr>
           <% end %>

@@ -5,15 +5,11 @@ class Public::CartItemsController < ApplicationController
   
   def create
     @cart_item.save
-    if 
-      
-    else
-      
-    end
+      redirect_to public_cart_items_path
   end
   
   def destroy
-    
+    @cart_item = CartItem.find(params[:id])
   end
   
   def destroy_all
