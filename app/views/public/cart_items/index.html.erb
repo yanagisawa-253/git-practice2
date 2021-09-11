@@ -1,10 +1,11 @@
 <div class="containar">
   <div class="row">
+      <h2 class="col-8 offset-1">ショッピングカート</h2>
+      <%= link_to 'カートを空にする', public_cart_items_path, method: :destroy_all, class: "btn btn-danger mb-3" %>
+  </div>
+  <div class="row">
     <div class="col-10 offset-1">
-      <h2>ショッピングカート</h2>
-      <%= link_to 'カートを空にする', current_customer.cart_item.destroy_all , class: "btn btn-danger" %>
-      <!--削除リンク作成する-->
-      <table class="table">
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th>商品名</th>
@@ -15,13 +16,14 @@
           </tr>
         </thead>
         <tbody>
-          <%= @cart_item.each do |cart_item| %>
+          <% @cart_items.each do |cart_item| %>
           <tr>
-            <td><%= f.hidden_field :name, value: "item.name" %></td>
-            <td><%= cart_item.item.with_tax_price %></td>
-            <td><%= f.select :amount, *[1..10] %></td>
-            <td><%= cart_item.item.subtotal %></td>
-            <td><%= link_to '削除する', destroy_public_cart_item_path(@cart_item.id),method: :delete, class: "btn btn-danger" %></td>
+            <td><%= cart_item.item.name %></td>
+            <!--データの格納が成功しているのでcart_itemeのitem.nameを表示する-->
+            <td><= cart_item.item.with_tax_price %></td>
+            <td><%= cart_item.amount %></td>
+            <td><= cart_item.subtotal %></td>
+            <td><%= link_to '削除する', public_cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
           </tr>
           <% end %>
         </tbody>

@@ -31,6 +31,7 @@ Things you may want to cover:
 
 ・topページに商品一覧表示時をさせる
 
-・address/index/destroyルート確認してできるようにする
-
 ・public/order/show　請求金額と商品合計を正しく書く
+
+
+ページネート<%= paginate @ %>　controllerに = [].page(params[:page]).reverse_order

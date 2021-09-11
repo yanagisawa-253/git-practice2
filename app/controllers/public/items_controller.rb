@@ -1,19 +1,12 @@
 class Public::ItemsController < ApplicationController
   
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).reverse_order
   end
   
   def show
     @item = Item.find(params[:id])
-  end
-  
-  def create
-    if Item.find_by(item_params)
-      puts "商品が存在します"
-    else
-      
-    end
+    @cart_item = CartItem.new
   end
 
 private

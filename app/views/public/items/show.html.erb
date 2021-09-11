@@ -18,11 +18,15 @@
                     <td><%= @item.price %></td>
                   </tr>
                   <tr>
-                    <%= form_with model: @cart_item, local:true do |f| %>
-                    <td><%= f.select :amount,  *[1..10], :prompt => "選択してください" %></td>
+                  <%= form_with model: [:public, @cart_item], local:true do |f| %>
+                    <% if customer_signed_in? %>
+                      <%= f.hidden_field :customer_id, :value => current_customer.id %>
+                    <% end %>
+                    <%= f.hidden_field :item_id, :value => @item.id %>
+                    <td><%= f.select :amount, *[1..10], :prompt => "選択してください" %></td>
                     <!--セレクトボックスの-->
                     <td><button type="submit" class="btn btn-success">カートに入れる</button></td>
-                    <% end %>
+                  <% end %>
                   </tr>
                 </tbody>
               </table>
