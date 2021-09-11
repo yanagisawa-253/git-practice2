@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     end
   
   namespace :public do
-    resources :customers, only:[:show, :edit, :update, :unsubscribe, :withdraw]
+    resources :customers, only:[:show, :edit, :update, :unsubscribe, :withdraw] do
+      get '/customers/unsubscribe' => 'customers#unsubscribe'
+    end
     resources :orders, only:[:new, :comfirm, :thanks, :create, :index, :show]
     resources :addresses, only:[:index, :create, :edit, :update, :destroy]
     resources :items, only:[:show, :index] do

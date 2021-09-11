@@ -18,11 +18,12 @@
           <tr>
             <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= order.address %></td>
-            <td><%= f.hidden_field :name,  %></td>
+            <td><%= f.hidden_field :name %></td>
             <td><%= order.total_payment %></td>
             <td><%= order.order_status %></td>
-            <td><%= link_to '表示する', public_order_path(order.id) class: "btn btn-primary" %></td>
+            <td><%= link_to '表示する', public_order_path(order.id), class: "btn btn-primary" %></td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>

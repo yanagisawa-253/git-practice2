@@ -10,7 +10,7 @@ class Public::CustomersController < ApplicationController
   
   def update
     @customer =Customer.find(params[:id])
-    if @customer.update
+    if @customer.update(customer_params)
       redirect_to public_customer_path(@customer.id)
     else
       render 'edit'
@@ -18,7 +18,7 @@ class Public::CustomersController < ApplicationController
   end
   
   def unsubscribe
-    @customer =Customer.find(params[:id])params
+    @customer =Customer.find(params[:id])
   end
   
   private

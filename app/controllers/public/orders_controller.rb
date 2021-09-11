@@ -1,5 +1,10 @@
 class Public::OrdersController < ApplicationController
-  def comfirm
+  def confirm
+    @order = Order.new(order_params)
+    @address = Address.find(params[:order][:address_id])
+    @order.postal_code = @adress.postal_code
+    @order.address = @address.address
+    @order.name = @address.name
   end
   
   def thanks
@@ -16,9 +21,11 @@ class Public::OrdersController < ApplicationController
   
   def new
     @order = Order.new
+    @address = Address.new
   end
   
   def create
+    @address = Address.new(params[:order][:address_id])
     @order = Order.new(params[:id])
     if @order.save
     else

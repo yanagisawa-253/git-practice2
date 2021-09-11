@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2 pt-5">
-      <table class="table">
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <th><%= attachment_image_tag @item, :image, :fill, 250, 200 %></th>
             <th>
-              <table class="table">
+              <table class="table table-borderless">
                 <tbody>
                   <tr>
                     <th><%= @item.name %></th>
@@ -19,7 +19,8 @@
                   </tr>
                   <tr>
                     <%= form_with model: @cart_item, local:true do |f| %>
-                    <td><%= f.select :amount, *[1..10] %></td>
+                    <td><%= f.select :amount,  *[1..10], :prompt => "選択してください" %></td>
+                    <!--セレクトボックスの-->
                     <td><button type="submit" class="btn btn-success">カートに入れる</button></td>
                     <% end %>
                   </tr>
