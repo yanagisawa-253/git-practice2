@@ -15,7 +15,7 @@
                     <td><%= @item.introduction %></td>
                   </tr>
                   <tr>
-                    <td><%= @item.price %></td>
+                    <td><%= @item.price %>円</td>
                   </tr>
                   <tr>
                   <%= form_with model: [:public, @cart_item], local:true do |f| %>

@@ -31,7 +31,7 @@
         <div class="form-group row">
           <label for="item_genre" class="col-sm-4 col-form-label">ジャンル</label>
           <div class="col-sm-8">
-            <%= f.text_field :genre %>
+            <%= f.select :genre_id, [['ケーキ',1], ['プリン',2], ['焼き菓子',3]] %>
           </div>
         </div>
         <div class="form-group row">
