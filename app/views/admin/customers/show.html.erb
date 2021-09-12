@@ -1,8 +1,8 @@
 <div class="containar">
   <div class="row">
     <div class="col-8 offset-2">
-      <h2><%= @customer.full_name %>さんの会員詳細</h2>
-      <table class="table">
+      <h3 class="mb-3"><%= @customer.full_name %>さんの会員詳細</h3>
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <th>会員ID</th>
@@ -38,7 +38,7 @@
           </tr>
           <tr>
             <th></th>
-            <th><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-success" %>
+            <th><%= link_to '編集する', edit_admin_customer_path(@customer), class: "btn btn-success pl-3" %>
                 <%= link_to '注文履歴一覧を見る', admin_items_path, class: "btn btn-primary" %></th>
           </tr>
         </tbody>

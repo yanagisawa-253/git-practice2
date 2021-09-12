@@ -7,37 +7,49 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h1>商品編集</h1>
-      <%= form_with model:@items, local:true do |f| %>
-        <div class="form-group">
-          <label for="item_image">商品画像</label>
-          <%= attachment_image_tag @item, :image, fallback: "no_image.jpg" %>
-          <%= f.attachment_field :image, placeholder: "画像" %>
+    <div class="col-sm-12 col-lg-5 px-sm-0 mx-auto">
+      <h2 class="pb-3">商品編集</h2>
+      <%= form_with model: [:admin, @item], local:true do |f| %>
+        <div class="form-group row">
+          <label for="item_image" class="col-sm-4 col-form-label">商品画像</label>
+          <div class="col-sm-8">
+            <%= f.attachment_field :image %>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="item_name">商品名</label>
-          <%= f.text_field :name %>
+        <div class="form-group row">
+          <label for="item_name" class="col-sm-4 col-form-label">商品名</label>
+          <div class="col-sm-8">
+            <%= f.text_field :name %>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="item_">商品説明</label>
-          <%= f.text_area :introduction %>
+        <div class="form-group row">
+          <label for="item_introduction" class="col-sm-4 col-form-label">商品説明</label>
+          <div class="col-sm-8">
+            <%= f.text_area :introduction %>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="item_">ジャンル</label>
-          <%= f.text_field :genre %>
+        <div class="form-group row">
+          <label for="item_genre" class="col-sm-4 col-form-label">ジャンル</label>
+          <div class="col-sm-8">
+            <%= f.text_field :genre %>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="item_">税抜価格</label>
-          <%= f.text_field :price %>
+        <div class="form-group row">
+          <label for="item_" class="col-sm-4 col-form-label">税抜価格</label>
+          <div class="col-sm-8">
+            <%= f.text_field :price %>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="item_">販売ステータス</label>
-          <%= f.text_area :is_active %>
+        <div class="form-group row">
+          <label for="item_" class="col-sm-4 col-form-label">販売ステータス</label>
+          <div class="col-sm-8">
+            <%= f.radio_button :is_active, "is_active" %>
+            <%= f.label :is_active, "販売中" %>
+            <%= f.radio_button :is_active, "is_active" %>
+            <%= f.label :is_active, "販売中止" %>
+          </div>
         </div>
-      <div class="form-group">
-        <button type="submit"　class="btn btn-success">新規登録</button>
-      </div>
+        <button type="submit" class="btn btn-success mx-auto">新規登録</button>
       <% end %>
     </div>
   </div>

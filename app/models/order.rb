@@ -4,7 +4,7 @@ class Order < ApplicationRecord
 
     
   
-  def full_address
-    self.postal_code + "" + self.address
-  end
+  # def full_address
+  #   self.postal_code + "" + self.address
+  # end
 end

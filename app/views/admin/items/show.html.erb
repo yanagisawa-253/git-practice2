@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8 offset-2 mx-auto">
       <h2>商品詳細</h2>
-      <table class="table ">
+      <table class="table table-borderless">
         <tbody>
           <tr>
             <td><%= attachment_image_tag @item, :image, :fill, 250, 200 %></td>
@@ -28,6 +28,10 @@
                 <tr>
                   <td>販売ステータス</td>
                   <td><%= @item.is_active %></td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td><%= link_to '編集する', edit_admin_item_path(@item), class: "btn btn-success" %></td>
                 </tr>
                 </td>
               </tr>

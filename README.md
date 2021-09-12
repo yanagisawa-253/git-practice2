@@ -33,5 +33,7 @@ Things you may want to cover:
 
 ・public/order/show　請求金額と商品合計を正しく書く
 
+・public/order/comfirm 途中まで
+
 
 ページネート<%= paginate @ %>　controllerに = [].page(params[:page]).reverse_order

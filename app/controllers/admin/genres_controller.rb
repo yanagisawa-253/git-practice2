@@ -8,11 +8,11 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      flash[:notice] = 'create'
+      flash[:notice] = 'ジャンルが保存されました'
       redirect_to admin_genres_path
     else
       @genres = Genre.all
-      flash.now[:notice] = 'not create'
+      flash.now[:notice] = '保存せれていません'
       render 'index'
     end
   end
