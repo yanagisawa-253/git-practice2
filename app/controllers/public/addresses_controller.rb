@@ -2,6 +2,7 @@ class Public::AddressesController < ApplicationController
   
   def index
     @addresses = Address.all
+    @customer = current_customer
     @address = Address.new
   end
   
@@ -12,13 +13,13 @@ class Public::AddressesController < ApplicationController
       redirect_to public_addresses_path
     else
       @addresses = Address.all
-      flash[:notice] = "not"
+      flash[:notice] = "登録できません"
       render 'index'
     end
   end
   
   def edit
-    @address =Address.find(params[:id])
+    @address = Address.find(params[:id])
   end
   
   def update

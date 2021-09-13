@@ -17,12 +17,18 @@ class Public::CustomersController < ApplicationController
     end
   end
   
-  def unsubscribe
+  def withdrow
     @customer =Customer.find(params[:id])
   end
   
+  def unsubscribe
+    @customer =Customer.find(params[:id])
+  end
+  # 退会の仕方について
+  
   private
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :is_active)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code,
+                                     :address, :telephone_number, :is_active)
   end
 end
