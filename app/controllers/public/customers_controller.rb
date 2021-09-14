@@ -9,7 +9,7 @@ class Public::CustomersController < ApplicationController
   end
   
   def update
-    @customer =Customer.find(params[:id])
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
       redirect_to public_customer_path(@customer.id)
     else
@@ -17,12 +17,16 @@ class Public::CustomersController < ApplicationController
     end
   end
   
-  def withdrow
-    @customer =Customer.find(params[:id])
+  def withdraw
+    @customer = Customer.find(params[:customer_id])
+    if @customer.update(is_active: false)
+      reset_session
+    end
+    redirect_to root_path
   end
   
   def unsubscribe
-    @customer =Customer.find(params[:id])
+    @customer = current_customer.id
   end
   # 退会の仕方について
   

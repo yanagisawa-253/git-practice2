@@ -44,7 +44,7 @@
       <div class="row">
         <div class="col-12 mx-auto">
           <button type="submit" class="btn btn-success">編集内容を保存</button>
-          <%= link_to '退会する',  class: 'btn btn-denger' %>
+          <%= link_to '退会する', public_customer_unsubscribe_path(@customer.id), class: 'btn btn-danger' %>
         </div>
       </div>
       <% end %>

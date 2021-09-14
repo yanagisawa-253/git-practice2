@@ -1,10 +1,6 @@
 class Public::OrdersController < ApplicationController
   def confirm
-    @order = Order.new(order_params)
-    @address = Address.find(params[:order][:address_id])
-    @order.postal_code = @adress.postal_code
-    @order.address = @address.address
-    @order.name = @address.name
+    @order = Order.find(params[:id])
   end
   
   def thanks
@@ -16,12 +12,13 @@ class Public::OrdersController < ApplicationController
   
   def show
     @order = Order.find(params[:id])
-    @order_item = Order.all
+    @order_items= @order.order_items
   end
   
   def new
     @order = Order.new
     @address = Address.new
+    @addresses =current_customer.address
   end
   
   def create

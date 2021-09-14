@@ -14,8 +14,7 @@ Rails.application.routes.draw do
   get '/homes/about' => 'homes#about'
   
   namespace :admin do
-    root to: 'admin/orders#index'
-    get 'homes/top' => 'homes#top'
+    root to: 'admin/homes#top'
     resources :items
     resources :genres, only:[:index, :create, :edit, :update]
     resources :customers, only:[:show, :index, :edit, :update]
@@ -24,10 +23,14 @@ Rails.application.routes.draw do
     end
   
   namespace :public do
-    resources :customers, only:[:show, :edit, :update, :unsubscribe, :withdraw] do
-      get '/customers/unsubscribe' => 'customers#unsubscribe'
+    resources :customers, only:[:show, :edit, :update] do
+      get '/unsubscribe' => 'customers#unsubscribe'
+      patch '/withdraw' => 'customers#withdraw'
     end
-    resources :orders, only:[:new, :comfirm, :thanks, :create, :index, :show]
+    resources :orders, only:[:new, :create, :index, :show] do
+      get '/comfirm' => 'orders#comfirm'
+      get '/get' => 'orders#thanks'
+    end
     resources :addresses, only:[:index, :create, :edit, :update, :destroy]
     resources :items, only:[:show, :index]
     resources :cart_items, only:[:index, :update, :destroy, :create] do
