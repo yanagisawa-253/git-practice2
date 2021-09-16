@@ -8,6 +8,10 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  def active_for_authentication?
+    super && (self.is_active == false)
+  end
+  
   def full_name
     self.last_name + "" + self.first_name
   end
