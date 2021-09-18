@@ -1,6 +1,6 @@
 class HomesController < ApplicationController
   def top
-    # @item = Item..where(:is_active, "true")
+     @items = Item.limit(8).offset(4)
   end
   
   def about
