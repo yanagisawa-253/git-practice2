@@ -11,7 +11,6 @@
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -22,7 +21,6 @@
             <td><%= cart_item.item.with_tax_price %></td>
             <td><%= cart_item.amount %></td>
             <td><%= cart_item.sum_of_price %></td>
-            <td><%= link_to '削除する', public_cart_item_path(cart_item.id), method: :delete, class: "btn btn-danger" %></td>
           </tr>
           <% end %>
         </tbody>
@@ -41,7 +39,7 @@
           </tr>
           <tr>
             <th>請求金額</th>
-            <td><%= @total.to_s(:delimited) %></td>
+            <td><%= @total + 800 %></td>
           </tr>
         </tbody>
       </table>
@@ -50,13 +48,13 @@
   <div class="row">
     <div class="col-12">
       <label class="px-3 mr-3">支払い方法</label>
-      <%=  %>
+      <%= @order.pay_type %>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
       <label class="px-3 mr-3">お届け先</label>
-      <%=  %>
+      <%= @order.full_address %>
     </div>
   </div>
   <div class="row">

@@ -2,8 +2,10 @@ class Public::OrdersController < ApplicationController
   
   def comfirm
     @order = Order.new(order_params)
-    
     params[:order][:pay_type] = params[:order][:pay_type].to_i
+    
+    @order.pay_type = session[:pay_type]
+    @order.address = session[:full_address]
     
     if params[:order][:serlect_address] == "0"
       @order.postal_code =current_customer.postal_code
@@ -31,7 +33,6 @@ class Public::OrdersController < ApplicationController
     end
     
     @cart_items = current_customer.cart_items
-    
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
   
@@ -39,12 +40,13 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    @order = Order.where(signed_in? :current_customer)
+    @orders = current_customer.orders
   end
   
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    @total = 0
   end
   
   def new
@@ -68,8 +70,9 @@ class Public::OrdersController < ApplicationController
       @order_item.amount = cart.amount
       @order_item.save
     end
+    
     current_customer.cart_items.destroy_all #ループ終了時カートの中身を削除する
-    redirect_to public_orders_comfirm_path(@order)
+    redirect_to public_orders_thanks_path
   end
   
   private
