@@ -24,8 +24,7 @@
                     <% end %>
                     <%= f.hidden_field :item_id, :value => @item.id %>
                     <td><%= f.select :amount, *[1..10], :prompt => "選択してください" %></td>
-                    <!--セレクトボックスの-->
-                    <td><button type="submit" class="btn btn-success">カートに入れる</button></td>
+                    <td><%= f.submit "カートに入れる", class: "btn btn-success" %></td>
                   <% end %>
                   </tr>
                 </tbody>

@@ -10,9 +10,9 @@
           </tr>
           <tr>
             <th>配送先</th>
-            <td><%= @order.postal_code %><br>
-                <%= @order.address %><br>
-                <%= @order.name %>
+            <td>〒<%= @order.customer.postal_code %><br>
+                <%= @order.customer.address %><br>
+                <%= @order.customer.full_name %>
             </td>
           </tr>
           <tr>
@@ -21,14 +21,13 @@
           </tr>
           <tr>
             <th>ステータス</th>
-            <td><%= @order.order_status %></td>
+            <td></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="col-3">
-      <table class="table table-bordered">
-        <p>請求情報</p>
+    <div class="col-4">
+      <p>請求情報</p>
         <table class="table table-bordered">
           <tbody>
             <tr>
@@ -37,7 +36,7 @@
             </tr>
             <tr>
               <th>配送料</th>
-              <td><%= @order.postage.to_s %></td>
+              <td><%= 800 %></td>
             </tr>
             <tr>
               <th>ご請求金額</th>
@@ -48,7 +47,7 @@
       </table>
     </div>
     <div class="row">
-      <div class="col-8 pr-4">
+      <div class="col-12 pr-4">
         <p>注文内容</p>
         <table class="table table-bordered">
           <thead>
@@ -60,12 +59,12 @@
             </tr>
           </thead>
           <tbody>
-            <% @order_item.each do |order_item| %>
+            <% @order_items.each do |order_item| %>
             <tr>
               <td><%= order_item.item.name %></td>
-              <td><%= order_item.item.with_tax_price %></td>
+              <td><%= order_item.item.price %></td>
               <td><%= order_item.amount %></td>
-              <td><%= order_item.item.sum_of_price %></td>
+              <td><%= ((order_item.item.price * 1.1).floor * (order_item.amount)).to_s %></td>
             </tr>
             <% end %>
           </tbody>

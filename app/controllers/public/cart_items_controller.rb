@@ -17,11 +17,13 @@ class Public::CartItemsController < ApplicationController
     #   cart_item.update_attribute(:amount, new_amount)
     #   @cart_item.delete 
     # end
-      @cart_item.save 
-      flash[:notice] = "商品がカートに追加されました"
-      redirect_to public_cart_items_path
+      if @cart_item.save 
+        flash[:notice] = "商品がカートに追加されました"
+        redirect_to public_cart_items_path
+      else
+        redirect_to public_items_path
+      end
     # end
-
   end
   
   def update

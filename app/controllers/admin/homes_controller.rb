@@ -1,5 +1,5 @@
 class Admin::HomesController < ApplicationController
   def top
-    # @orders = Oders.all
+    @orders = Order.where(created_at: "true")
   end
 end

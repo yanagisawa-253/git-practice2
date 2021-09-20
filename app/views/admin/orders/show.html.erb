@@ -42,20 +42,36 @@
           </tr>
         </thead>
         <tbody>
-          <%= @order_items.each do |f| %>
+          <%= @order_items.each do |order_item| %>
           <tr>
-            <td><%= order_item.item_id %></td>
-            <td><%= order_item.tax_price %></td>
-            <td></td>
-            <td><%= order_item.subtotal</td>
-            <td></td>
+            <td><%= order_item.item.name %></td>
+            <td><%= (order_item.item.price * 1.1).floor %></td>
+            <td><%= order_item.amount %></td>
+            <td><%= (order_item.item.price * order_item.amount *1.1).floor %></td>
+            <td><%= f.submit "更新", class: "btn btn-success" %></td>
             <td></td>
           </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
     <div class="col-3">
-      <!--金額とか書くところ-->
+      <div class="table table--borderless align-self-end">
+        <tbody>
+          <tr>
+            <td>商品合計</td>
+            <td><%= @total %>円</td>
+          </tr>
+          <tr>
+            <td>送料</td>
+            <td>800円</td>
+          </tr>
+          <tr>
+            <td>請求合計金額</td>
+            <td><%= @total + 800 %>円</td>
+          </tr>
+        </tbody>
+      </div>
     </div>
   </div>
 </div> 

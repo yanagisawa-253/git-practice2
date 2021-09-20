@@ -5,4 +5,5 @@ class OrderItem < ApplicationRecord
   def subtotal
     order_item.with_tax_price * amount
   end
+  
 end

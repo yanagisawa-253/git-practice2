@@ -17,7 +17,13 @@
             <td><%= customer.id %></td>
             <td><%= link_to customer.full_name, admin_customer_path(customer) %></td>
             <td><%= customer.email %></td>
-            <td><%= customer.is_active %></td>
+            <td>
+              <% if customer.is_active == true %>
+              有効
+              <% else %>
+              退会
+              <% end %>
+            </td>
           </tr>
           <% end %>
         </tbody>
